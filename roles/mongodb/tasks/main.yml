@@ -16,14 +16,27 @@
     name: mongodb-org
     state: installed
 
-#- name: Start nginx service
-#  ansible.builtin.systemd_service:
-#    state: started
-#    name: mongodb
-#    enabled: yes
 
-- name: Replace old hostname with new hostname (requires Ansible >= 2.4)
+
+- name: configure MongoDB
   ansible.builtin.replace:
     path: /etc/mongod.conf
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
+
+- name: Start mongodb service
+  ansible.builtin.systemd_service:
+    name: mongod
+    state: started
+    enabled: yes
+
+- name: download and Extract mongoDB
+  ansible.builtin.unarchive:
+    src: https://github.com/roboshop-devops-project/mongodb/archive/main.zip
+    dest: /tmp
+    remote_src: yes
+
+- name: Load catalogue schema
+  community.mongodb.mongodb_shell:
+    file: "/tmp/mongodb-main/catalogue.js"
+    idempotent: yes
