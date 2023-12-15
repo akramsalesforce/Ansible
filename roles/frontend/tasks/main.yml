@@ -27,3 +27,20 @@
     src: /tmp/frontend-main/static/
     dest: /usr/share/nginx/html/
     remote_src: yes
+
+- name: Copy configurtion
+  ansible.builtin.copy:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
+
+
+
+- name: Enable nginx service
+  ansible.builtin.systemd_service:
+    enabled: true
+    name: niginx
+
+- name: Enable nginx service
+  ansible.builtin.systemd_service:
+    state: started
+    name: niginx
