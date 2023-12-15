@@ -2,3 +2,28 @@
   ansible.builtin.yum:
     name: nginx
     state: installed
+
+    # curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
+
+
+
+- name: download and Extract
+  ansible.builtin.unarchive:
+    src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
+    dest: /tmp
+    remote_src: yes
+
+# cd /usr/share/nginx/html
+- name: clean up remove directory
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: absent
+
+# unzip /tmp/frontend.zip
+# mv frontend-main/static/* .
+
+- name: download and Extract
+  ansible.builtin.copy:
+    src: /tmp/frontend-main/static/
+    dest: /usr/share/nginx/html/
+    remote_src: yes
