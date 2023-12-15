@@ -3,3 +3,8 @@
   become: yes
   roles:
     - frontend
+- name: Roboshop setup
+  hosts: mongodb
+  become: yes
+  roles:
+    - mongodb
