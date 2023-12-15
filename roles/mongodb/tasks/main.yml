@@ -1,0 +1,29 @@
+
+#curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo
+
+
+- name: download and Extract
+  ansible.builtin.copy:
+    src: mongodb.repo
+    dest: /etc/yum.repos.d/mongodb.repo
+
+# yum install -y mongodb-org
+# systemctl enable mongod
+# systemctl start mongod
+
+- name: Install mongodb
+  ansible.builtin.yum:
+    name: mongodb-org
+    state: installed
+
+#- name: Start nginx service
+#  ansible.builtin.systemd_service:
+#    state: started
+#    name: mongodb
+#    enabled: yes
+
+- name: Replace old hostname with new hostname (requires Ansible >= 2.4)
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
