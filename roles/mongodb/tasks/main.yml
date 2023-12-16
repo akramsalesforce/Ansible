@@ -38,6 +38,13 @@
 
 - name: Load catalogue schema
   community.mongodb.mongodb_shell:
-    file: "/tmp/*/catalogue.js"
+    file: "/tmp/mongodb-main/catalogue.js"
     idempotent: yes
+
+
+- name: Load MongoDB Schema
+  community.mongodb.mongodb_shell:
+     executable: mongo
+     script: "/tmp/mongodb-main/catalogue.js"
+
 
