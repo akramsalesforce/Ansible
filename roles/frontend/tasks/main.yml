@@ -9,8 +9,8 @@
 
 - name: download and extract frontend
   ansible.builtin.include_role:
-    name: download
-    tasks_from: common
+    name: common
+    tasks_from: download
 
 # cd /usr/share/nginx/html
 - name: clean up remove directory

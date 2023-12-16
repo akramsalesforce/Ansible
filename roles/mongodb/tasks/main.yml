@@ -32,8 +32,8 @@
 
 - name: download and extract mongodb
   ansible.builtin.include_role:
-    name: download
-    tasks_from: common
+    name: common
+    tasks_from: download
 
 
 - name: Load MongoDB schema
