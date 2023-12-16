@@ -7,6 +7,7 @@
   ansible.builtin.yum:
     name:
       - mysql-community-server
+      - MySQL-python
     state: installed
 
 - name: Start MySQL Service
@@ -15,10 +16,6 @@
     state: started
     enabled: yes
 
-- name: Install PyMySQL
-  pip:
-    name: PyMySQL
-    executable: pip3
 
 - name: Check the DB Password by Collecting Information
   community.mysql.mysql_info:
