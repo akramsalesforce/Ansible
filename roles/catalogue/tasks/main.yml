@@ -10,13 +10,6 @@
     state: installed
 
 
-
-
-
-
-
-
-
 # useradd roboshop
 - name: Add application user
   ansible.builtin.user:
