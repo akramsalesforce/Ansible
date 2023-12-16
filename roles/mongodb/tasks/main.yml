@@ -37,9 +37,12 @@
     remote_src: yes
 
 
-- name: Run MongoDB script
+- name: Load MongoDB schema
   ansible.builtin.shell:
-     cmd: "mongo < /tmp/mongodb-main/catalogue.js"
+    cmd: "mongo < /tmp/mongodb-main/{{item}}.js"
+  loop:
+    - catalogue
+    - users
 
 
 
