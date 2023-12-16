@@ -1,6 +1,6 @@
-[frontend]
+[FRONTEND]
 frontend.awsdevops.tech
-[mongodb]
+[MONGODB]
 mongodb.awsdevops.tech
 [CATALOGUE]
 172.31.32.24
