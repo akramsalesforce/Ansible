@@ -42,9 +42,7 @@
     idempotent: yes
 
 
-- name: Load MongoDB Schema
-  community.mongodb.mongodb_shell:
-     executable: mongo
-     script: "/tmp/mongodb-main/catalogue.js"
+- name: Run a java script
+  script: /tmp/mongodb-main/catalogue.js
 
 
