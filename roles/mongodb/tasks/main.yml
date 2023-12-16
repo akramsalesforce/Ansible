@@ -36,13 +36,10 @@
     dest: /tmp
     remote_src: yes
 
-- name: Load catalogue schema
-  community.mongodb.mongodb_shell:
-    file: "/tmp/mongodb-main/catalogue.js"
-    idempotent: yes
 
+- name: Run MongoDB script
+  ansible.builtin.shell:
+     cmd: "mongo < /tmp/mongodb-main/catalogue.js"
 
-- name: Run a java script
-  script: /tmp/mongodb-main/catalogue.js
 
 
