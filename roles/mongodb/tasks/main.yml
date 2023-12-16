@@ -30,7 +30,7 @@
     state: started
     enabled: yes
 
-- name: Load mongoDB sechma
+- name: download and extract mongodb
   ansible.builtin.include_role:
     name: download
     tasks_from: common

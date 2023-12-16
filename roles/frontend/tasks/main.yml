@@ -7,11 +7,10 @@
 
 
 
-- name: download and Extract
-  ansible.builtin.unarchive:
-    src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
-    dest: /tmp
-    remote_src: yes
+- name: download and extract frontend
+  ansible.builtin.include_role:
+    name: download
+    tasks_from: common
 
 # cd /usr/share/nginx/html
 - name: clean up remove directory
