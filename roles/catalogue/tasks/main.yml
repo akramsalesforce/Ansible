@@ -36,6 +36,13 @@
     path: /home/roboshop
     state: absent
 
+- name: Create directory for app content
+  ansible.builtin.file:
+    path: /home/roboshop/catalogue
+    state: directory
+    owner: roboshop
+    group: roboshop
+
 - name: Copy app content
   ansible.builtin.copy:
     src: /tmp/catalogue-main/
