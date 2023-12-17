@@ -3,11 +3,21 @@
     src: mysql.repo
     dest: /etc/yum.repos.d/mysql.repo
 
-- name: Install MySQL Server
-  ansible.builtin.yum:
-    name:
-      - mysql-community-server
-    state: installed
+#- name: Install MySQL Server and Python MySQL Connector
+#  ansible.builtin.yum:
+#    name:
+#      - mysql-community-server
+#      - python3-mysql
+#    state: present
+
+
+- name: Installing Mysql  and dependencies
+  package:
+      name: "{{item}}"
+      state: present
+  loop:
+      - mysql-server
+      - python3-mysqldb
 
 - name: Start MySQL Service
   ansible.builtin.systemd:
