@@ -17,7 +17,7 @@
       state: present
   loop:
       - mysql-server
-      - python3-mysqldb
+      - python3-mysql
 
 - name: Start MySQL Service
   ansible.builtin.systemd:
